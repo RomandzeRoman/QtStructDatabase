@@ -1,0 +1,6 @@
+[submodule "QtTupleConversions"]
+	path = QtTupleConversions
+	url = https://github.com/RomandzeRoman/QtTupleConversions.git
+[submodule "QtMultiThread"]
+	path = QtMultiThread
+	url = https://github.com/MotorPogromizd/QtMultiThread.git

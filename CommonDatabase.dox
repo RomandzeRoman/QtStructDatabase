@@ -1,0 +1,53 @@
+@section integration How to integrate 
+
+@subsection install Install
+
+@subsection configure Configure Qt project
+To use this library add to .pro file:
+@code
+include(CommonDatabase/CommonDatabase.pri)
+CONFIG += c++1z
+@endcode
+@section example Example of using
+
+@subsection usagedb Usage of database
+@code
+#include "QtStructDatabase/database.h"
+struct Stored {
+    int a;
+};
+Database<Stored> db("storage.db");
+db.addRecord(Stored{0});
+auto vec = db.read(0, 1); // returns QVector<Stored>{ Stored{0} }
+@endcode
+
+@subsection usagemodel Usage viewmodel
+Use this method when you dont need to modify stored data for displaying
+Code in C++
+@code
+struct User {
+    QString name;
+    int age;
+};
+DatabaseViewModel<User> model(
+    "storage.db",
+    QStringList{"name", "age"},
+    false,
+    this
+);
+@endcode
+Code in QML
+@code
+import QtQuick.Controls 2.X
+ListView {
+    model: yourmodel
+    delegate: Rectangle {
+        Label {
+            text: name // USE names from string list from constructor
+        }
+        Label {
+            text: age
+        }
+    }
+}
+@endcode
