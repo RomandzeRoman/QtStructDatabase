@@ -8,12 +8,12 @@
 #include "databaseviewmodeldetail.h"
 #include "databaseviewmodeldetail_vector.h"
 
-#include "CommonDatabase/TupleConversions/typelist.h"
+#include "QtStructDatabase/QtTupleConversions/typelist.h"
 
-#include "CommonDatabase/filter.h"
+#include "QtStructDatabase/filter.h"
 #include "asyncdatabase.h"
 
-#include "DebugOutput/debugoutput_disabled.h"
+#include "QtDebugPrint/debugoutput_disabled.h"
 
 
 template <typename Database, size_t tableIndex, typename FilterType>
@@ -591,6 +591,6 @@ DatabaseTableViewModel<Database<T...>, tableIndex, FilterType>::writeToDatabase(
     return r;
 }
 
-#include "DebugOutput/undefdebug.h"
+#include "QtDebugPrint/undefdebug.h"
 
 #endif // DATABASETABLEVIEWMODEL_H

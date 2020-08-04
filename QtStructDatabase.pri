@@ -1,5 +1,5 @@
 include($$PWD/QtTupleConversions/QtTupleConversions.pri)
-include($$PWD/QtMultiThread/QtMultiThread.pri)
+#include($$PWD/QtMultiThread/QtMultiThread.pri)
 QT += sql
 HEADERS += \
     $$PWD/private/asyncdatabase.h \
@@ -25,4 +25,7 @@ SOURCES += \
     $$PWD/private/taskedobject.cpp \
     $$PWD/private/workerthread.cpp
 OTHER_FILES += \
-    $$PWD/CommonDatabase.dox
+    $$PWD/README.md
+
+
+INCLUDEPATH += $$PWD/..

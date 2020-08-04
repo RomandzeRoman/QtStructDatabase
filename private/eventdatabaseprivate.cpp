@@ -3,9 +3,9 @@
 #include <QWriteLocker>
 #include <QThread>
 
-/* ******************************************************************
+/********************************************************************
  * Public
- * ******************************************************************
+ ********************************************************************
  */
 
 EventDatabasePrivate::EventDatabasePrivate(
@@ -18,6 +18,7 @@ EventDatabasePrivate::EventDatabasePrivate(
     , _data{ data }
     , _activationChangeCallback{ activationChangeCallback }
     , _canUpdateActivationRecordTimer{ new QTimer(this) }
+    , _currentActivation{ 0u }
     , _canUpdateActivationRecord{ false }
 {
     _canUpdateActivationRecordTimer->setSingleShot(true);
@@ -44,13 +45,18 @@ QAbstractListModel* EventDatabasePrivate::data() {
     return _data;
 }
 
-void EventDatabasePrivate::selectActivation(uint actiovationIndex) {
-    _activationChangeCallback(actiovationIndex);
+uint EventDatabasePrivate::currentActivation() const {
+    return _currentActivation;
 }
 
-/* ******************************************************************
+void EventDatabasePrivate::selectActivation(uint activationIndex) {
+    setCurrentActivation(activationIndex);
+    _activationChangeCallback(activationIndex);
+}
+
+/********************************************************************
  * Protected
- * ******************************************************************
+ ********************************************************************
  */
 
 void EventDatabasePrivate::setActivations(QAbstractListModel* activations) {
@@ -79,12 +85,19 @@ void EventDatabasePrivate::denyUpdateActivationRecord() {
     _canUpdateActivationRecordTimer->start();
 }
 
-/* ******************************************************************
+/*******************************************************************
  * Private slots
- * ******************************************************************
+ ********************************************************************
  */
 
 void EventDatabasePrivate::processCanUpdateActivation() {
     QWriteLocker l(&_canUpdateLock);
     _canUpdateActivationRecord = true;
+}
+
+void EventDatabasePrivate::setCurrentActivation(uint newActivation) {
+    if (_currentActivation != newActivation) {
+        _currentActivation = newActivation;
+        emit currentActivationChanged(newActivation);
+    }
 }

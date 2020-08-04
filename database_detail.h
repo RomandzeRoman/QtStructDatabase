@@ -16,9 +16,9 @@
 #include <QSqlQuery>
 #include <QSqlRecord>
 
-#include "TupleConversions/conversions.h"
-#include "TupleConversions/structconversions.h"
-#include "TupleConversions/typelist.h"
+#include "QtTupleConversions/conversions.h"
+#include "QtTupleConversions/structconversions.h"
+#include "QtTupleConversions/typelist.h"
 
 namespace DatabaseDetail {
 

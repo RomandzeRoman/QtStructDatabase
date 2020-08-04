@@ -7,7 +7,7 @@
 #include <qglobal.h>
 #include <QDateTime>
 
-#include "TupleConversions/structconversions.h"
+#include "QtTupleConversions/structconversions.h"
 
 template <typename T>
 struct EventDatabaseRecord : public T {

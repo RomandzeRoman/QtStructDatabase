@@ -8,26 +8,21 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlRecord>
-//#include <QSqlField>
 #include <QSqlError>
 #include <QFile>
 #include <QThread>
 #include <QMutex>
 #include <QVector>
 
-#include "TupleConversions/structconversions.h"
-#include "TupleConversions/conversions.h"
-#include "TupleConversions/typelist.h"
+#include "QtTupleConversions/structconversions.h"
+#include "QtTupleConversions/conversions.h"
+#include "QtTupleConversions/typelist.h"
 
 #include "database_detail.h"
 #include "filter.h"
 #include "private/databaserecord.h"
 
-#include "DebugOutput/debugoutput_disabled.h"
-//#include <QDebug>
-//#include <iostream>
-//#define qDebug() while (false) std::cout
-
+#include <QtDebugPrint/debugoutput_disabled.h>
 
 struct Wrong {
     const int i;
@@ -603,8 +598,8 @@ Database<T...>::read(uint offset, uint count, FilterType filter) {
     readQuery.prepare(queryString);
     if (!readQuery.exec()) {
         // TODO Do error handling
-        qDebug() << "Read query exec error occured"
-            << readQuery.lastError().text();
+//        qDebug() << "Read query exec error occured"
+//            << readQuery.lastError().text();
         return result;
     }
 
@@ -838,7 +833,7 @@ bool Database<T...>::checkTypes() const {
     // TODO      
 
     const bool checkCorrect = checkTypesImpl(std::make_index_sequence<count>{});
-    dbg << AS_KV(checkCorrect);
+//    qDebug() << AS_KV(checkCorrect);
     return checkCorrect;
 }
 
@@ -936,7 +931,7 @@ QString Database<T...>::currentThreadConnectionName() const {
     return connectionName;
 }
 
-#include "DebugOutput/undefdebug.h"
+#include <QtDebugPrint/undefdebug.h>
 
 #endif // DATABASE_H
 

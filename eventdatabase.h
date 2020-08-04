@@ -4,14 +4,14 @@
 #include <QDateTime>
 #include <QThread>
 
-#include "CommonDatabase/private/eventdatabaseprivate.h"
-#include "CommonDatabase/private/databasetableviewmodel.h"
+#include "QtStructDatabase/private/eventdatabaseprivate.h"
+#include "QtStructDatabase/private/databasetableviewmodel.h"
 
 #include "private/asyncdatabase.h"
 #include "private/eventdatabasedetail.h"
 #include "eventdatabaserecord.h"
 
-#include "DebugOutput/debugoutput_disabled.h"
+#include "QtDebugPrint/debugoutput_disabled.h"
 
 template <typename T>
 class EventDatabase : public EventDatabasePrivate
@@ -238,6 +238,6 @@ void EventDatabase<T>::checkIfPreviousActivationCorrect() {
     _previousShutdownCorrect = lastActivation.shutdownCorrect;
 }
 
-#include "DebugOutput/undefdebug.h"
+#include "QtDebugPrint/undefdebug.h"
 
 #endif // EVENTDATABASE_H

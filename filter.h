@@ -6,9 +6,9 @@
 
 #include <QString>
 
-#include "TupleConversions/structconversions.h"
-#include "TupleConversions/conversions.h"
-#include "TupleConversions/typelist.h"
+#include "QtTupleConversions/structconversions.h"
+#include "QtTupleConversions/conversions.h"
+#include "QtTupleConversions/typelist.h"
 #include "database_detail.h"
 #include "eventdatabaserecord.h"
 

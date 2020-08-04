@@ -6,7 +6,7 @@
 #include <type_traits>
 #include <qglobal.h>
 
-#include "../TupleConversions/structconversions.h"
+#include "../QtTupleConversions/structconversions.h"
 
 template <typename T>
 struct DatabaseRecord : public T {

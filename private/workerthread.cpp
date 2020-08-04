@@ -1,7 +1,7 @@
 #include "workerthread.h"
 
 #include <QMutexLocker>
-#include "DebugOutput/debugoutput.h"
+#include "QtDebugPrint/debugoutput.h"
 
 /* ******************************************************************
  * Public
