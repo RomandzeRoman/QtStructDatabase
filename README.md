@@ -11,7 +11,6 @@ Database<Stored> db("storage.db");
 db.addRecord(Stored{0});
 auto vec = db.read(0, 1); // returns QVector<Stored>{ Stored{0} }
 ```
-## Example show in QML
 
 ## Stored types
 - int
